@@ -6,6 +6,7 @@ import { colors } from './tailwind.config'
 import PurgecssPlugin from 'purgecss-webpack-plugin'
 import StylelintPlugin from 'stylelint-webpack-plugin'
 
+const wpUrl = 'https://got2dance.wpapi.app'
 const SiteUrl = process.env.NODE_ENV === 'production' ? config.url : 'http://localhost:3004'
 const purgecssWhitelistPatterns = [
   /^__/,
@@ -54,7 +55,7 @@ export default {
    * Global CSS
    * @see https://nuxtjs.org/api/configuration-css
    */
-  css: ['~/assets/styles/main.css'],
+  css: ['~/assets/styles/main.css', { src: '~/assets/styles/main.scss', lang: 'scss' }],
 
   /**
    * Custom Nuxt plugins
@@ -67,7 +68,7 @@ export default {
    * @see https://nuxtjs.org/guide/modules/
    * @see https://pwa.nuxtjs.org/
    */
-  modules: ['@nuxtjs/google-analytics', '@nuxtjs/pwa', '@nuxtjs/sitemap', 'nuxt-fontawesome'],
+  modules: ['@nuxtjs/google-analytics', '@nuxtjs/pwa', '@nuxtjs/sitemap', 'nuxt-fontawesome', ['wpapi-js', { url: wpUrl }]],
 
 
   'google-analytics': {
